@@ -9,7 +9,7 @@ const app = express();
 app.use(express.urlencoded({extended: true}));
 
 function isUrlValid(urlToCheck){
-    var valid = dnsSync.resolve(url.parse(urlToCheck).host);    //Checks if the host actually exists
+    var valid = dnsSync.resolve(url.parse(urlToCheck).host);    //Checks if the host of the URL actually exists
     return valid !== null;
 }
 
