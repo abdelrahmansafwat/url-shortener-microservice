@@ -37,7 +37,7 @@ app.post('/api/shorturl/new', async (req, res) => {
             if(err) return console.error(err);
             res.json({
                 original_url: data.original_url,
-                short_url: process.env.HOST + data.short_url
+                short_url: process.env.HOST + data.short_url    //Sends the specified hostname from concatenated with the new short ID
             });
         });
     }
@@ -48,7 +48,7 @@ app.post('/api/shorturl/new', async (req, res) => {
 
 app.get('/:shorturl', (req, res) => {
     var shortUrl = req.params.shorturl;
-    
+
     urlModel.findOne({short_url: shortUrl}, (err, data) => {
         if(err) return console.error(err);
         res.redirect(data.original_url);
